@@ -1,23 +1,26 @@
 import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header';
 
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Formheader from './components/Formheader';
+import CenteredTabs from './components/Tabs';
+import Question_form from './components/Question_form';
+import Userform from './components/Userform';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Routes>
+          <Route path="/form/:id" element={<><Formheader/><CenteredTabs/><Question_form/></>}/>
+            
+
+          <Route path="/" element={<Header/>}/>
+          
+          <Route path="/response" element={<Userform/>}/>
+
+        </Routes>
+      </Router>
     </div>
   );
 }
